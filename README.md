@@ -69,4 +69,4 @@ An ultra-modern, visually stunning, and highly interactive personal portfolio we
 This project is licensed under the MIT License.
 
 ---
-Created with ❤️ by Jeshua Roji
+Created with ❤️ by Kishore
