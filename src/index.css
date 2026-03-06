@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-neon-blue: #00f3ff;
+  --color-neon-purple: #bc13fe;
+  --color-neon-cyan: #00ffff;
+  --color-neon-pink: #ff00ea;
+  --color-deep-space: #020617;
+  --color-glass-white: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  font-family: var(--font-inter);
+  background-color: var(--color-deep-space);
+  color: white;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-tech {
+  font-family: var(--font-orbitron);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+  min-height: 100vh;
+}
+
+/* Glassmorphism Utilities */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 243, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.neon-text {
+  text-shadow: 0 0 10px var(--color-neon-blue), 0 0 20px var(--color-neon-blue);
+}
+
+.neon-border {
+  box-shadow: 0 0 10px var(--color-neon-blue), inset 0 0 10px var(--color-neon-blue);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-neon-blue), var(--color-neon-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyber-button {
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--color-neon-blue);
+  color: var(--color-neon-blue);
+  padding: 10px 25px;
+  font-family: var(--font-orbitron);
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cyber-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.cyber-button:hover::before {
+  left: 100%;
+}
+
+.cyber-button:hover {
+  background: var(--color-neon-blue);
+  color: black;
+  box-shadow: 0 0 20px var(--color-neon-blue);
+}
+
+/* Section Header Styles */
+.section-title {
+  @apply text-4xl md:text-6xl font-bold mb-12 relative;
+}
+
+.section-title::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-24 h-1 bg-neon-blue;
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 243, 255, 0.1);
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-deep-space);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-neon-purple), var(--color-neon-blue));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--color-neon-blue), var(--color-neon-purple));
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 243, 255, 0.3);
+  color: white;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+}
